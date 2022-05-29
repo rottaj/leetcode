@@ -20,12 +20,28 @@ class Solution:
       else:
         return arr       
 
+
+  def build(self, left, right):
+    ret = [left[0]]
+    length = 0
+    if len(left) > len(right):
+      length = len(left)
+    else:
+      length = len(right)
+    print(length)
+    while len(ret) <= length:
+      try:
+        temp = [left[len(ret)], right[len(ret)]]
+      except: None
+      ret.append(temp)
+      print("RET", ret)
+
   def levelOrder(self, root):
     branchRight = self.traverse(root, [], 'right')
     branchLeft = self.traverse(root, [], 'left')
-
-    print(branchLeft)
-    print(branchRight)
+    print("LEFT", branchLeft)
+    print("RIGHT", branchRight)
+    self.build(branchLeft, branchRight)
 
 
 
