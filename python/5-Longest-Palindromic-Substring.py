@@ -1,13 +1,16 @@
-def longestPalindrome(s):
-  x = list(s)
-  print(x[::-1], x)
-  if x[::-1] == x:
-    return s
-  else:
-    return longestPalindrome(''.join(x[:-1]))
+
+class Solution:
+
+  def longestPalindrome(self, s):
+    x = list(s)
+    print(x[::-1], x)
+    if x[::-1] == x:
+      return s
+    else:
+      return longestPalindrome(''.join(x[:-1]))
 
 
-
-s = "cbbd"
-test = longestPalindrome(s)
-print(test)
+if __name__ == '__main__':
+  s = "cbbd"
+  test = Solution().longestPalindrome(s)
+  print(test)
