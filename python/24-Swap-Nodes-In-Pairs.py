@@ -22,15 +22,15 @@ class Solution:
 
 
   def swapPairs(self, head):
+    if head is None or head.next is None:
+      return []
     ll = self.traverse(head, [], 'objects') 
     ret = []
     i = len(ll)-1
-    print(i)
     while i >=1:
-      ll[i].next, ll[i-1].next = ll[i-1], ll[i]
+      ll[i].next, ll[i-1].next = ll[i], ll[i-1]
       i-=2
-    ret = self.traverse(ll[0], [], 'vals')
-    print(ret)
+    return ll[0]
 
 
 if __name__ == '__main__':
@@ -42,7 +42,4 @@ if __name__ == '__main__':
   NodeTwo.next = NodeThree
   NodeThree.next = NodeFour
   
-  #x = Solution().traverse(NodeOne, [])
-  Solution().swapPairs(NodeOne)
-  #ans = Solution().traverse(ret[0], [], 'vals')
-  #print("ANS: ", ans)
+  ret = Solution().swapPairs(NodeOne)
