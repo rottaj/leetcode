@@ -13,25 +13,29 @@ class Solution:
 
   def traverse(self, node, arr):
     arr.append(node.val)
-    if node.next is not None:
+    if node.next:
       return self.traverse(node.next, arr)
     else:
       return arr
 
   def removeNthFromEnd(self, head, n):
-    dummyNode, prevNode, currNode = head, ListNode(0), head
-    c = 1
-    while currNode.next:
-      prevNode = currNode
+    # get length of list
+    dummyNode = ListNode(0)
+    currNode, length = head, 0
+    dummyNode.next = head
+    while currNode:
+      length +=1 
+      currNode = currNode.next # None at end of loop
+    # get distance for second loop ( using n  & length )
+    length = length - (length - n)-1
+    print(length)
+    currNode = dummyNode
+    while length > 0:
+      length-=1
       currNode = currNode.next
-      if c == n:
-        prevNode.next = currNode.next
-      dummyNode = prevNode
-      print(prevNode.val, currNode.val, c, "DuMMY", dummyNode.val)
-      c+=1
+    currNode.next = currNode.next.next
     return dummyNode.next
-
-
+  
 if __name__ == "__main__":  
 
   l1 = ListNode(1)
@@ -44,5 +48,7 @@ if __name__ == "__main__":
   l3.next = l4
   l4.next = l5
 
-  test = Solution().removeNthFromEnd(l1, 4)
-  print(test.val)
+  x = Solution().removeNthFromEnd(l1, 4)
+  ans = Solution().traverse(x, [])
+  print(ans)
+
