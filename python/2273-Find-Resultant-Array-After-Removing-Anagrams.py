@@ -18,7 +18,7 @@ class BruteForce:
         else:
           right[c] = 1
       print(left, right)
-      if left == right:
+      if left == right and left not in anagrams:
         print("TRUE", left, words[0])
         anagrams.append(words[0])
       words.pop(0) 
@@ -28,5 +28,5 @@ class BruteForce:
 
 if __name__ == '__main__':
   words = ["abba","baba","bbaa","cd","cd"]
-  words = ["a","b","c","d","e"]
+  #words = ["a","b","c","d","e"]
   BruteForce().removeAnagrams(words)
